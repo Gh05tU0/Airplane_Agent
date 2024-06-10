@@ -104,14 +104,6 @@ def main():
     for i in range(BULLET1_NUM):
         bullet1.append(bullet.Bullet1(me.rect.midtop))
     
-    # 生成超级子弹
-    bullet2 = []
-    bullet2_index = 0
-    BULLET2_NUM = 8
-    for i in range(BULLET2_NUM // 2):
-        bullet2.append(bullet.Bullet2((me.rect.centerx - 33, me.rect.centery)))
-        bullet2.append(bullet.Bullet2((me.rect.centerx + 30, me.rect.centery)))
-    
     clock = pygame.time.Clock()
     
     # 中弹图片索引
@@ -323,15 +315,9 @@ def main():
             # 发射子弹
             if not (delay % 10):
                 bullet_sound.play()
-                if is_double_bullet:
-                    bullets = bullet2
-                    bullets[bullet2_index].reset((me.rect.centerx - 33, me.rect.centery))
-                    bullets[bullet2_index + 1].reset((me.rect.centerx + 30, me.rect.centery))
-                    bullet2_index = (bullet2_index + 2) % BULLET2_NUM
-                else:
-                    bullets = bullet1
-                    bullets[bullet1_index].reset(me.rect.midtop)
-                    bullet1_index = (bullet1_index + 1) % BULLET1_NUM
+                bullets = bullet1
+                bullets[bullet1_index].reset(me.rect.midtop)
+                bullet1_index = (bullet1_index + 1) % BULLET1_NUM
             
             # 检测子弹是否击中敌机
             for b in bullets:
