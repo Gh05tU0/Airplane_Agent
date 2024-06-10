@@ -235,6 +235,15 @@ def main():
                 me.invincible = False
                 pygame.time.set_timer(INVINCIBLE_TIME, 0)
         
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_w:
+                    me.moveUp()
+                elif event.key == pygame.K_s:
+                    me.moveDown()
+                elif event.key == pygame.K_a:
+                    me.moveLeft()
+                elif event.key == pygame.K_d:
+                    me.moveRight()
         # 根据用户的得分增加难度
         if level == 1 and score > 50000:
             level = 2
@@ -280,16 +289,16 @@ def main():
         
         if life_num and not paused:
             # 检测用户的键盘操作
-            key_pressed = pygame.key.get_pressed()
-            
-            if key_pressed[K_w] or key_pressed[K_UP]:
-                me.moveUp()
-            if key_pressed[K_s] or key_pressed[K_DOWN]:
-                me.moveDown()
-            if key_pressed[K_a] or key_pressed[K_LEFT]:
-                me.moveLeft()
-            if key_pressed[K_d] or key_pressed[K_RIGHT]:
-                me.moveRight()
+            # key_pressed = pygame.key.get_pressed()
+
+            # if key_pressed[K_w] or key_pressed[K_UP]:
+            #     me.moveUp()
+            # if key_pressed[K_s] or key_pressed[K_DOWN]:
+            #     me.moveDown()
+            # if key_pressed[K_a] or key_pressed[K_LEFT]:
+            #     me.moveLeft()
+            # if key_pressed[K_d] or key_pressed[K_RIGHT]:
+            #     me.moveRight()
             
             # 绘制全屏炸弹补给并检测是否获得
             if bomb_supply.active:
